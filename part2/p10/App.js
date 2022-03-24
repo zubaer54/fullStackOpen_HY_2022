@@ -1,5 +1,4 @@
 import { useState } from 'react'
-
 const Search = (props) => {
   const ached = (e) => {
     console.log(e.target.value)
@@ -48,7 +47,6 @@ const PersonForm = (props) => {
       setNewName('')
       setNewNumber('')
     }
-
   }
   return (
     <form onSubmit = {addP}>
@@ -68,7 +66,6 @@ const PersonForm = (props) => {
     </form>
   )
 }
-
 const Persons = (props) => {
   return (
     <div>{props.foPersons.map(p => 
@@ -76,7 +73,6 @@ const Persons = (props) => {
     </div>
   )
 }
-
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456'},
@@ -98,5 +94,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
