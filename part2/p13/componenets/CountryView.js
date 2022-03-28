@@ -1,31 +1,32 @@
 const CountryView = (props) => {
-
-    const foundCountries = (arr, que) => {
+    
+    const countryDetails = (arr, que) => {
         return arr.filter(ob => (ob).name.common === que)
     }
-    const foundCountry = foundCountries(props.countries, props.countryName)
-    const lungi = foundCountry.map(c => (c).languages)
-    const difLang = lungi.map(a => Object.values(a))
+    const countryViewDetails = countryDetails(props.countries, props.countryName)
+    const langObj = countryViewDetails.map(c => c.languages)
+    const langArr = langObj.map(c => Object.values(c))
+    const countryViewLang = langArr[0]
+    console.log(countryViewLang)
 
-    const differLang = difLang[0] // from [[x, y]] to [x, y]
     return (
-    <div>
-        <h2>{foundCountry.map((a, index) =>
-            <div key = {index}>{a.name.common}</div>)}
-        </h2>
         <div>
-            {foundCountry.map((a, index) => 
-            <div key = {index}>Capital {a.capital}</div>)}
-            {foundCountry.map((a, index) => 
-            <div key = {index}>Area {a.area} square kms</div>)}
+            <h3>{countryViewDetails.map((a, i) =>
+                <div key = {i}>{a.name.common}</div>)}
+            </h3>
+            <div>
+                {countryViewDetails.map((a, i) =>
+                <div key = {i}>Capital {a.capital}</div>)}
+                {countryViewDetails.map((a, i) =>
+                <div key = {i}>Area {a.area}</div>)}
+            </div>
+            <h3>Languages</h3>
+            <ul>
+                {countryViewLang.map((a, i) =>
+                    <li key = {i}>{a}</li>)}
+            </ul>
+            <p>{countryViewDetails.map((a, i) => <img key = {i} src = {a.flags.png}/>)}</p>
         </div>
-        <h3>Languages</h3>
-        <ul>
-            {differLang.map(a =>
-            <li>{a}</li>)}
-        </ul>
-        <p>{foundCountry.map(a => <img src = {a.flags.png}/>)}</p>
-    </div>
     )
 }
 
