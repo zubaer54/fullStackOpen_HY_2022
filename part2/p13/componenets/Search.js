@@ -1,5 +1,5 @@
 const Search = (props) => {
-    const clicked = (e) => {
+    const handleChange = (e) => {
     console.log(e.target.value)
     const keyword = e.target.value
     const filterItems = (arr, que) => {
@@ -11,7 +11,7 @@ const Search = (props) => {
       <form>
         <div>
           find countries: <input
-              onChange = {clicked}/>
+              onChange = {handleChange}/>
         </div>
       </form>
     )
