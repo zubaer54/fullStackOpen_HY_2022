@@ -17,7 +17,7 @@ const App = () => {
   }
   useEffect(hook, [])
   const listOfCountries = countries.map (c => (c).name.common)
-  console.log(foundCountry)
+  console.log('App comp: after search', foundCountry)
   return (
     <div>
       <h3>Countries </h3>
