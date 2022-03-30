@@ -1,5 +1,5 @@
 const CountryView = (props) => {
-    
+    console.log('CountryView rendered')
     const countryDetails = (arr, que) => {
         return arr.filter(ob => (ob).name.common === que)
     }
