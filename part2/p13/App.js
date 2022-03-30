@@ -6,7 +6,6 @@ import CountryList from './components/CountryList'
 const App = () => {
   const [countries, setCountries] = useState([])
   const [foundCountry, setFoundCountry] = useState([])
-
   const hook = () => {
     console.log('hook effect is triggered to get data for all countries ')
     axios
@@ -16,15 +15,15 @@ const App = () => {
       })
   }
   useEffect(hook, [])
+  console.log('App comp: list of countries', countries)
   const listOfCountries = countries.map (c => (c).name.common)
-  console.log('App comp: after search', foundCountry)
+  console.log(foundCountry)
   return (
     <div>
       <h3>Countries </h3>
-      <Search listOfCountries = {listOfCountries} setFoundCountry = {setFoundCountry} />
+      <Search listOfCountries = {listOfCountries} setFoundCountry = {setFoundCountry}/>
       <CountryList foundCountry = {foundCountry} countries = {countries} />
-      
-    </div>
+    </div> 
   )
 }
 export default App
