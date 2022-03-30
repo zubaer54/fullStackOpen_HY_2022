@@ -1,21 +1,12 @@
-import { useState } from "react"
-import CountryView from './CountryView'
-
-const CountryList = (props) => {
-    const [click, setClick] = useState()
-    const [singleCountry, setSingleCountry] = useState('')
-    const foundCountriesLength = props.foundCountry.length
+import CountryView from "./CountryView"
+import ListView from "./ListView"
+const CountryList = ({foundCountry, countries}) => {
+    const foundCountriesLength = foundCountry.length
     console.log('CountryList comp: number of matches', foundCountriesLength)
-
-    const handleClick = (props) => {
-        console.log('button clikced')
-        console.log(props.a)
-        setSingleCountry(props.a)
-        return (
-            setClick(true)
-        )
+    if (foundCountriesLength === 0){
+        return null
     }
-    if (foundCountriesLength > 10) {
+    else if (foundCountriesLength > 10) {
         return(
             <div>
                 Too many matches, specify another filter
@@ -25,26 +16,15 @@ const CountryList = (props) => {
     else if (foundCountriesLength <= 10 && foundCountriesLength !== 1) {
         return (
             <div>
-                {props.foundCountry.map((a, i) =>
-                <div key = {i}>
-                    {a} <button onClick={() => handleClick({a})}>show</button>
-                </div>)}
-                <div>
-                    {click? <CountryView countryName = {singleCountry} countries = {props.countries} />
-                    :  null}
-                </div>
+                <ListView foundCountry = {foundCountry} countries = {countries} />
             </div>
         )
     }
     else if (foundCountriesLength === 1) {
-        const cName = props.foundCountry[0]
+        const cName = foundCountry[0]
         return (
-            <CountryView countryName = {cName} countries = {props.countries} />
+            <CountryView countryName = {cName} countries = {countries} />
         )
     }
-    else {
-        return null
-    }
 }
-
-  export default CountryList
+export default CountryList
