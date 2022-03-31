@@ -5,7 +5,7 @@ const Weather = (props) => {
     const [w, setW] = useState([])
     const [isLoading, setLoading] = useState(true)
     const city = props.cap[0]
-    const api_key = '5fd1c330f2d7a8b5c51e5b3aa0ee7677'
+    const api_key = process.env.REACT_APP_API_KEY
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`
 
     useEffect(() => {
